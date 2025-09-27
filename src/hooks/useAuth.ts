@@ -6,7 +6,7 @@ export function useAuth() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token')
+    const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null
     setIsAuthenticated(!!token)
     setIsLoading(false)
   }, [])
@@ -14,7 +14,9 @@ export function useAuth() {
   const login = async (data: UserLogin) => {
     try {
       const response = await authApi.login(data)
-      localStorage.setItem('access_token', response.data.access_token)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('access_token', response.data.access_token)
+      }
       setIsAuthenticated(true)
       return { success: true }
     } catch (error: any) {
@@ -25,7 +27,9 @@ export function useAuth() {
   const signup = async (data: UserCreate) => {
     try {
       const response = await authApi.signup(data)
-      localStorage.setItem('access_token', response.data.access_token)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('access_token', response.data.access_token)
+      }
       setIsAuthenticated(true)
       return { success: true }
     } catch (error: any) {
@@ -34,7 +38,9 @@ export function useAuth() {
   }
 
   const logout = () => {
-    localStorage.removeItem('access_token')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('access_token')
+    }
     setIsAuthenticated(false)
   }
 

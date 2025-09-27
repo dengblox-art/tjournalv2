@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/hooks/useAuth"
-import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 
 interface HeaderProps {
@@ -22,7 +21,6 @@ interface HeaderProps {
 
 export function Header({ onAddTrade }: HeaderProps) {
   const { logout } = useAuth()
-  const { theme, setTheme } = useTheme()
 
   return (
     <motion.header
@@ -62,14 +60,6 @@ export function Header({ onAddTrade }: HeaderProps) {
               <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 text-xs"></span>
             </Button>
 
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
 
             {/* User Menu */}
             <DropdownMenu>
