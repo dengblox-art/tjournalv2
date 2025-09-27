@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Home, ArrowLeft, Zap } from "lucide-react"
+import { Hop as Home, ArrowLeft, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { NeonButton } from "@/components/ui/neon-button"
