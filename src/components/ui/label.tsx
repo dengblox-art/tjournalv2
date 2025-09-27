@@ -21,7 +21,11 @@ const Label = React.forwardRef<
 Label.displayName = LabelPrimitive.Root.displayName
 
 export { Label }
-  ({ className, ...props }, ref) => {
+
+const Label2 = React.forwardRef<
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement>
+>(({ className, ...props }, ref) => {
     return (
       <label
         ref={ref}
@@ -34,4 +38,4 @@ export { Label }
     )
   }
 )
-Label.displayName = "Label"
+Label2.displayName = "Label"
